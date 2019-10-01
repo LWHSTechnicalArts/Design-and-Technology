@@ -2,6 +2,7 @@
 #define BLYNK_PRINT Serial
 //#include <ESP8266_Lib.h>
 #include <BlynkSimpleShieldEsp8266.h>
+#include <EEPROM.h>
 
 // You should get Auth Token in the Blynk App.
 // Go to the Project Settings (nut icon).
@@ -33,17 +34,22 @@ void setup()
   Serial.begin(ESP8266_BAUD);
   delay(10);
 
-Blynk.begin(auth, wifi, ssid, pass);
+  red = EEPROM.read(0);
+  green = EEPROM.read(1);
+  blue = EEPROM.read(2);
+  dimmer = EEPROM.read(3);
+
+  
 
   strip.begin();
-  strip.show();
 
   for (int i = 0; i < strip.numPixels(); i++)
   {
-    strip.setPixelColor(i, 255, 180, 0);  //default color
+    strip.setPixelColor(i, (dimmer * red) / 255, (dimmer * green) / 255, (dimmer * blue) / 255); //default color
     strip.show();
-    delay (100);
+    delay (50);
   }
+  Blynk.begin(auth, wifi, ssid, pass);
 }
 void loop()
 {
@@ -59,6 +65,7 @@ BLYNK_WRITE(V5)
     strip.setPixelColor(i, (dimmer * red) / 255, (dimmer * green) / 255, (dimmer * blue) / 255);
   }
   strip.show();
+  EEPROM.write(3, dimmer);
 }
 
 BLYNK_WRITE(V6)
@@ -72,4 +79,7 @@ BLYNK_WRITE(V6)
     strip.setPixelColor(i, (dimmer * red) / 255, (dimmer * green) / 255, (dimmer * blue) / 255);
   }
   strip.show();
+  EEPROM.write(0, red);
+  EEPROM.write(1, green);
+  EEPROM.write(2, blue);
 }
