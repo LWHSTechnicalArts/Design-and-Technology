@@ -43,7 +43,7 @@ void setup()
 
   strip.begin();
 
-  for (int i = 0; i < strip.numPixels(); i++)
+  for (int i = 0; i < strip.numPixels(); i++)   //show the color last saved in EEPROM
   {
     strip.setPixelColor(i, (dimmer * red) / 255, (dimmer * green) / 255, (dimmer * blue) / 255); //default color
     strip.show();
@@ -51,10 +51,13 @@ void setup()
   }
   Blynk.begin(auth, wifi, ssid, pass);
 }
+
 void loop()
 {
   Blynk.run();
 }
+
+//-----BLYNK virual pin functions-----V
 
 BLYNK_WRITE(V5)
 {
@@ -65,7 +68,7 @@ BLYNK_WRITE(V5)
     strip.setPixelColor(i, (dimmer * red) / 255, (dimmer * green) / 255, (dimmer * blue) / 255);
   }
   strip.show();
-  EEPROM.write(3, dimmer);
+  EEPROM.write(3, dimmer);   //store dimmer data in EEPROM
 }
 
 BLYNK_WRITE(V6)
@@ -79,7 +82,8 @@ BLYNK_WRITE(V6)
     strip.setPixelColor(i, (dimmer * red) / 255, (dimmer * green) / 255, (dimmer * blue) / 255);
   }
   strip.show();
-  EEPROM.write(0, red);
+  
+  EEPROM.write(0, red);    //store RGB data in EEPROM
   EEPROM.write(1, green);
   EEPROM.write(2, blue);
 }
