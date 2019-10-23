@@ -25,8 +25,7 @@ unsigned int green = 254;
 unsigned int blue = 254;
 
 
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(PIXEL_COUNT, PIN, NEO_GRB + NEO_KHZ800);  //use me
-//Adafruit_NeoPixel strip = Adafruit_NeoPixel(PIXEL_COUNT, PIN, NEO_GRBW + NEO_KHZ800);  //temp light
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(PIXEL_COUNT, PIN, NEO_GRB + NEO_KHZ800);  //light initialization
 
 void setup()
 {
