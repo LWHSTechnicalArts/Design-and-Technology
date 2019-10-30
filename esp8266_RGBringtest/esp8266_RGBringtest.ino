@@ -1,8 +1,8 @@
 #include <Adafruit_NeoPixel.h>
-#define BLYNK_PRINT Serial
-//#include <ESP8266_Lib.h>
 #include <BlynkSimpleShieldEsp8266.h>
 #include <EEPROM.h>
+
+#define BLYNK_PRINT Serial
 
 // You should get Auth Token in the Blynk App.
 // Go to the Project Settings (nut icon).
@@ -29,6 +29,7 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(PIXEL_COUNT, PIN, NEO_GRB + NEO_KHZ8
 
 void setup()
 {
+  delay (5000); 
   // Debug console
   Serial.begin(ESP8266_BAUD);
   delay(10);
