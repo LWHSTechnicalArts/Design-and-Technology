@@ -1,8 +1,8 @@
+#define BLYNK_PRINT Serial
+
 #include <Adafruit_NeoPixel.h>
 #include <BlynkSimpleShieldEsp8266.h>
 #include <EEPROM.h>
-
-#define BLYNK_PRINT Serial
 
 // You should get Auth Token in the Blynk App.
 // Go to the Project Settings (nut icon).
