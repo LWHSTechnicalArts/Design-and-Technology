@@ -29,7 +29,6 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(PIXEL_COUNT, PIN, NEO_GRB + NEO_KHZ8
 
 void setup()
 {
-  delay (5000); 
   // Debug console
   Serial.begin(ESP8266_BAUD);
   delay(10);
@@ -39,8 +38,6 @@ void setup()
   blue = EEPROM.read(2);
   dimmer = EEPROM.read(3);
 
-  
-
   strip.begin();
 
   for (int i = 0; i < strip.numPixels(); i++)   //show the color last saved in EEPROM
@@ -49,6 +46,7 @@ void setup()
     strip.show();
     delay (50);
   }
+  delay(1000);
   Blynk.begin(auth, wifi, ssid, pass);
 }
 
