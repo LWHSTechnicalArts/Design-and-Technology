@@ -11,7 +11,7 @@ unsigned int blue = 254;
 
 int buttonPress = 0;
 
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(PIXEL_COUNT, PIN, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(PIXEL_COUNT, PIN, NEO_GRB + NEO_KHZ800);  //use me
 
 void setup() {
   //start serial connection
@@ -55,7 +55,9 @@ void white() {
   {
     strip.setPixelColor(i, 255, 255, 255); //white
     strip.show();
+
   }
+  delay(2);
 }
 
 void cyan() {
@@ -64,6 +66,7 @@ void cyan() {
     strip.setPixelColor(i, 0, 255, 255); //cyan
     strip.show();
   }
+  delay(2);
 }
 
 void magenta() {
@@ -72,6 +75,7 @@ void magenta() {
     strip.setPixelColor(i, 255, 0, 255); //magenta
     strip.show();
   }
+  delay(2);
 }
 
 void yellow() {
@@ -80,6 +84,7 @@ void yellow() {
     strip.setPixelColor(i, 255, 255, 0); //yellow
     strip.show();
   }
+  delay(2);
 }
 
 void blinking() {
@@ -93,4 +98,5 @@ void blinking() {
     strip.setPixelColor(i, 0, 0, 0); //off
     strip.show();
   }
+  delay(2);
 }
