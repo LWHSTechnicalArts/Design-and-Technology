@@ -2,7 +2,7 @@
 #include <Adafruit_NeoPixel.h>
 
 #define PIN 6
-#define PIXEL_COUNT 12
+#define PIXEL_COUNT 6
 #define BUTTON_PIN 2
 
 unsigned int red = 254;
@@ -57,7 +57,7 @@ void white() {
     strip.show();
 
   }
-  delay(2);
+  delay(5);
 }
 
 void cyan() {
@@ -66,7 +66,7 @@ void cyan() {
     strip.setPixelColor(i, 0, 255, 255); //cyan
     strip.show();
   }
-  delay(2);
+  delay(5);
 }
 
 void magenta() {
@@ -75,7 +75,7 @@ void magenta() {
     strip.setPixelColor(i, 255, 0, 255); //magenta
     strip.show();
   }
-  delay(2);
+  delay(5);
 }
 
 void yellow() {
@@ -84,7 +84,7 @@ void yellow() {
     strip.setPixelColor(i, 255, 255, 0); //yellow
     strip.show();
   }
-  delay(2);
+  delay(5);
 }
 
 void blinking() {
@@ -98,5 +98,5 @@ void blinking() {
     strip.setPixelColor(i, 0, 0, 0); //off
     strip.show();
   }
-  delay(2);
+  delay(5);
 }
