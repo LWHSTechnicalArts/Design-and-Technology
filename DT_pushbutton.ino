@@ -2,7 +2,7 @@
 #include <Adafruit_NeoPixel.h>
 
 #define PIN 6
-#define PIXEL_COUNT 6
+#define NUMPIXELS 6
 #define BUTTON_PIN 2
 
 unsigned int red = 254;
@@ -11,12 +11,12 @@ unsigned int blue = 254;
 
 int buttonPress = 0;
 
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(PIXEL_COUNT, PIN, NEO_GRB + NEO_KHZ800);  //use me
+Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);  //use me
 
 void setup() {
   //start serial connection
   Serial.begin(9600);
-  strip.begin();
+  pixels.begin();
   //configure pin 2 as an input and enable the internal pull-up resistor
   pinMode(BUTTON_PIN, INPUT_PULLUP);
 }
@@ -51,52 +51,52 @@ void loop() {
 }
 
 void white() {
-  for (int i = 0; i < strip.numPixels(); i++)
+  for (int i = 0; i < pixels.numPixels(); i++)
   {
-    strip.setPixelColor(i, 255, 255, 255); //white
-    strip.show();
+    pixels.setPixelColor(i, 255, 255, 255); //white
+    pixels.show();
 
   }
   delay(5);
 }
 
 void cyan() {
-  for (int i = 0; i < strip.numPixels(); i++)
+  for (int i = 0; i < pixels.numPixels(); i++)
   {
-    strip.setPixelColor(i, 0, 255, 255); //cyan
-    strip.show();
+    pixels.setPixelColor(i, 0, 255, 255); //cyan
+    pixels.show();
   }
   delay(5);
 }
 
 void magenta() {
-  for (int i = 0; i < strip.numPixels(); i++)
+  for (int i = 0; i < pixels.numPixels(); i++)
   {
-    strip.setPixelColor(i, 255, 0, 255); //magenta
-    strip.show();
+    pixels.setPixelColor(i, 255, 0, 255); //magenta
+    pixels.show();
   }
   delay(5);
 }
 
 void yellow() {
-  for (int i = 0; i < strip.numPixels(); i++)
+  for (int i = 0; i < pixels.numPixels(); i++)
   {
-    strip.setPixelColor(i, 255, 255, 0); //yellow
-    strip.show();
+    pixels.setPixelColor(i, 255, 255, 0); //yellow
+    pixels.show();
   }
   delay(5);
 }
 
 void blinking() {
-  for (int i = 0; i < strip.numPixels(); i++)   //show the color last saved in EEPROM
+  for (int i = 0; i < pixels.numPixels(); i++)   //show the color last saved in EEPROM
   {
-    strip.setPixelColor(i, 255, 255, 255); //default color
-    strip.show();
+    pixels.setPixelColor(i, 255, 255, 255); //default color
+    pixels.show();
     delay(100);
     int sensorVal = digitalRead(BUTTON_PIN);   //test for press during sequence
     if (sensorVal == LOW) loop();
-    strip.setPixelColor(i, 0, 0, 0); //off
-    strip.show();
+    pixels.setPixelColor(i, 0, 0, 0); //off
+    pixels.show();
   }
   delay(5);
 }
